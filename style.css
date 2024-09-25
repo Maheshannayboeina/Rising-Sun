@@ -1,0 +1,180 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #0077be; /* Initial: Sky blue */
+  font-family: sans-serif;
+  animation: dayNightCycle 20s linear infinite; 
+}
+
+.sky {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.sun-container {
+  width: 100px;
+  height: auto;
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: riseAndSet 20s ease-in-out infinite; 
+}
+
+.sun {
+  width: 170%;
+  height: auto;
+  animation: rotateSun 35s linear infinite;
+}
+
+@keyframes riseAndSet {
+  0% {
+    bottom: -50px;
+    transform: translateX(-50%) scale(0.5);
+    opacity: 0;
+  }
+  25% { /* Sunrise complete */
+    bottom: 500px;
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  50% { /* Sun at peak */
+    bottom: 500px;
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  75% { /* Sunset complete */
+    bottom: -50px;
+    transform: translateX(-50%) scale(0.5);
+    opacity: 0;
+  }
+  100% { 
+    bottom: -50px;
+    transform: translateX(-50%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes rotateSun {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.cloud {
+  width: 200px;
+  height: 100px;
+  background-color: #ccc;
+  border-radius: 100px / 80px; 
+  position: absolute;
+  top: 80px; 
+  animation: drift 20s linear infinite, bob 3s ease-in-out infinite alternate;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background-color: #ccc;
+  border-radius: 50%; 
+}
+
+.cloud::before {
+  width: 80px;
+  height: 80px;
+  top: -20px;
+  left: 40px;
+}
+
+.cloud::after {
+  width: 120px;
+  height: 120px;
+  top: -30px;
+  right: 40px;
+}
+
+.cloud1 {
+  left: 10%;
+  animation-delay: 2s; 
+}
+
+.cloud2 {
+  left: 45%;
+  animation-delay: 5s;
+}
+
+.cloud3 {
+  left: 80%;
+  animation-delay: 8s;
+}
+
+.cloud span { 
+  content: '';
+  position: absolute;
+  background-color: #ccc;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  top: -25px;
+  left: 100px; 
+}
+
+@keyframes drift {
+  0% {
+    transform: translateX(-20%); 
+  }
+  100% {
+    transform: translateX(120%); 
+  }
+}
+
+@keyframes bob {
+  0% {
+    transform: translateY(0); 
+  }
+  100% {
+    transform: translateY(10px); 
+  }
+}
+
+.ground {
+  height: 100px;
+  background-color: #663300; 
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.tree-image-left { 
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 500px; 
+  height: auto; 
+}
+
+.tree-image-right { 
+  position: absolute;
+  bottom: 10px;
+  right: 10px; 
+  width: 500px; 
+  height: auto;
+}
+
+/* Day/Night Cycle */
+@keyframes dayNightCycle {
+  0% {
+    background-color: #000033; /* Nighttime dark blue */
+  }
+  25% { /* Gradually transition to day */
+    background-color: #0077be; /* Daytime blue */
+  }
+  55% {
+    background-color: #0077be; /* Daytime blue */
+  }
+  100% {
+    background-color: #000033; /* Nighttime dark blue */
+  }
+}
