@@ -36,12 +36,12 @@ body {
     opacity: 0;
   }
   25% { /* Sunrise complete */
-    bottom: 500px;
+    bottom: 50vh ;
     transform: translateX(-50%) scale(1);
     opacity: 1;
   }
   50% { /* Sun at peak */
-    bottom: 500px;
+    bottom: 50vh ;
     transform: translateX(-50%) scale(1);
     opacity: 1;
   }
